@@ -7,6 +7,11 @@ sdk install java 22.0.1-graalce
 sdk use java 22.0.1-graalce
 sudo apt-get install build-essential zlib1g-dev -y
 
+git clone git@github.com:apache/incubator-seata.git
+cd ./incubator-seata/
+git reset --hard 1c0a442842801413e4dc8e663c452ed18fc1dc1b
+./mvnw -Prelease-seata -Dmaven.test.skip=true clean install -T1C
+
 git clone git@github.com:linghengqian/seata-client-graalvm-native-test.git
 cd ./seata-client-graalvm-native-test/
 ./mvnw clean test
