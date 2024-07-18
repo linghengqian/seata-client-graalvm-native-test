@@ -13,3 +13,8 @@ cd ./seata-client-graalvm-native-test/
 ./mvnw -PgenerateMetadata -DskipNativeTests -e -T1C clean test native:metadata-copy
 ./mvnw -PnativeTestInJunit -T1C -e clean test
 ```
+
+- The Log as follows.
+```shell
+$./mvnw -PnativeTestInJunit -T1C -e clean test
+```
