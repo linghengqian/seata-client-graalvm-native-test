@@ -21,8 +21,6 @@ public final class AddressRepository {
 
     /**
      * create table t_address if not exists.
-     *
-     * @throws SQLException SQL exception
      */
     public void createTableIfNotExists() throws SQLException {
         String sql = "CREATE TABLE IF NOT EXISTS t_address (address_id BIGINT NOT NULL, address_name VARCHAR(100) NOT NULL, PRIMARY KEY (address_id))";
@@ -35,8 +33,6 @@ public final class AddressRepository {
 
     /**
      * drop table t_address.
-     *
-     * @throws SQLException SQL exception
      */
     public void dropTable() throws SQLException {
         String sql = "DROP TABLE IF EXISTS t_address";
@@ -49,8 +45,6 @@ public final class AddressRepository {
 
     /**
      * truncate table t_address.
-     *
-     * @throws SQLException SQL exception
      */
     public void truncateTable() throws SQLException {
         String sql = "TRUNCATE TABLE t_address";
@@ -66,7 +60,6 @@ public final class AddressRepository {
      *
      * @param address address
      * @return addressId of the insert statement
-     * @throws SQLException SQL exception
      */
     public Long insert(final Address address) throws SQLException {
         String sql = "INSERT INTO t_address (address_id, address_name) VALUES (?, ?)";
@@ -84,7 +77,6 @@ public final class AddressRepository {
      * delete by id.
      *
      * @param id id
-     * @throws SQLException SQL exception
      */
     public void delete(final Long id) throws SQLException {
         String sql = "DELETE FROM t_address WHERE address_id=?";
@@ -100,7 +92,6 @@ public final class AddressRepository {
      * select all.
      *
      * @return list of address
-     * @throws SQLException SQL exception
      */
     public List<Address> selectAll() throws SQLException {
         String sql = "SELECT * FROM t_address";
@@ -120,8 +111,6 @@ public final class AddressRepository {
     /**
      * Assert rollback with transactions.
      * This is currently just a simple test against a non-existent table and does not involve the competition scenario of distributed transactions.
-     *
-     * @throws SQLException An exception that provides information on a database access error or other errors.
      */
     public void assertRollbackWithTransactions() throws SQLException {
         Connection connection = dataSource.getConnection();

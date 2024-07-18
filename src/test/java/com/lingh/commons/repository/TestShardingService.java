@@ -19,19 +19,16 @@ public final class TestShardingService {
         addressRepository = new AddressRepository(dataSource);
     }
 
-    public AddressRepository getAddressRepository() {
-        return addressRepository;
-    }
-
     /**
      * Process success.
      *
      * @throws SQLException An exception that provides information on a database access error or other errors.
      */
     public void processSuccess() throws SQLException {
+        addressRepository.createTableIfNotExists();
+        addressRepository.truncateTable();
         for (int i = 1; i <= 10; i++) {
-            Address address = new Address((long) i, "address_test_" + i);
-            addressRepository.insert(address);
+            addressRepository.insert(new Address((long) i, "address_test_" + i));
         }
         assertThat(addressRepository.selectAll(),
                 equalTo(LongStream.range(1, 11).mapToObj(i -> new Address(i, "address_test_" + i)).collect(Collectors.toList())));
@@ -40,12 +37,6 @@ public final class TestShardingService {
         }
         assertThat(addressRepository.selectAll(), equalTo(new ArrayList<>()));
         addressRepository.assertRollbackWithTransactions();
-    }
-
-    /**
-     * Clean environment.
-     */
-    public void cleanEnvironment() throws SQLException {
         addressRepository.dropTable();
     }
 }

@@ -36,10 +36,7 @@ public class SeataTest {
         config.setJdbcUrl("jdbc:tc:postgresql:16.3-bookworm://test-databases-postgres/demo_ds");
         DataSource dataSource = new HikariDataSource(config);
         TestShardingService testShardingService = new TestShardingService(dataSource);
-        testShardingService.getAddressRepository().createTableIfNotExists();
-        testShardingService.getAddressRepository().truncateTable();
         testShardingService.processSuccess();
-        testShardingService.cleanEnvironment();
         System.clearProperty(SERVICE_DEFAULT_GROUP_LIST_KEY);
     }
 }
