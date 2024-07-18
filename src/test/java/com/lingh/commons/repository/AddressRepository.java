@@ -1,6 +1,9 @@
 package com.lingh.commons.repository;
 
 import com.lingh.commons.entity.Address;
+import io.seata.core.exception.TransactionException;
+import io.seata.tm.api.GlobalTransaction;
+import io.seata.tm.api.GlobalTransactionContext;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -112,18 +115,15 @@ public final class AddressRepository {
      * Assert rollback with transactions.
      * This is currently just a simple test against a non-existent table and does not involve the competition scenario of distributed transactions.
      */
-    public void assertRollbackWithTransactions() throws SQLException {
-        Connection connection = dataSource.getConnection();
-        try {
-            connection.setAutoCommit(false);
+    public void assertRollbackWithTransactions() throws SQLException, TransactionException {
+        GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
+        try (Connection connection = dataSource.getConnection()) {
+            tx.begin(60000);
             connection.createStatement().executeUpdate("INSERT INTO t_address (address_id, address_name) VALUES (2024, 'address_test_2024')");
             connection.createStatement().executeUpdate("INSERT INTO t_table_does_not_exist (test_id_does_not_exist) VALUES (2024)");
-            connection.commit();
-        } catch (SQLException e) {
-            connection.rollback();
-        } finally {
-            connection.setAutoCommit(true);
-            connection.close();
+            tx.commit();
+        } catch (SQLException | TransactionException e) {
+            tx.rollback();
         }
         try (
                 Connection conn = dataSource.getConnection();
