@@ -1,6 +1,5 @@
-package com.lingh.commons.repository;
+package com.lingh.commons;
 
-import com.lingh.commons.entity.Address;
 import io.seata.core.exception.TransactionException;
 import io.seata.tm.api.GlobalTransaction;
 import io.seata.tm.api.GlobalTransactionContext;
@@ -116,14 +115,14 @@ public final class AddressRepository {
      * This is currently just a simple test against a non-existent table and does not involve the competition scenario of distributed transactions.
      */
     public void assertRollbackWithTransactions() throws SQLException, TransactionException {
-        GlobalTransaction tx = GlobalTransactionContext.getCurrentOrCreate();
+        GlobalTransaction globalTransaction = GlobalTransactionContext.getCurrentOrCreate();
         try (Connection connection = dataSource.getConnection()) {
-            tx.begin(60000);
+            globalTransaction.begin(60000);
             connection.createStatement().executeUpdate("INSERT INTO t_address (address_id, address_name) VALUES (2024, 'address_test_2024')");
             connection.createStatement().executeUpdate("INSERT INTO t_table_does_not_exist (test_id_does_not_exist) VALUES (2024)");
-            tx.commit();
-        } catch (SQLException | TransactionException e) {
-            tx.rollback();
+            globalTransaction.commit();
+        } catch (Exception ignored) {
+            globalTransaction.rollback();
         }
         try (
                 Connection conn = dataSource.getConnection();

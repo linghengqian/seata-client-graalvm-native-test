@@ -1,6 +1,5 @@
-package com.lingh.commons.repository;
+package com.lingh.commons;
 
-import com.lingh.commons.entity.Address;
 import io.seata.core.exception.TransactionException;
 
 import javax.sql.DataSource;

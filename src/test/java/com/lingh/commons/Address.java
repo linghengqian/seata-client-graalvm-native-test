@@ -1,4 +1,4 @@
-package com.lingh.commons.entity;
+package com.lingh.commons;
 
 public record Address(Long addressId, String addressName) {
 }
