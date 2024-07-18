@@ -1,0 +1,8 @@
+{
+  "rules": [
+    {"includeClasses": "**"},
+    {"excludeClasses": "com.lingh.**"}
+  ],
+  "regexRules": [
+  ]
+}
