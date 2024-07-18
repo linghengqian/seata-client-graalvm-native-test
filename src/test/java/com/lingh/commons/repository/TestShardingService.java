@@ -19,11 +19,6 @@ public final class TestShardingService {
         addressRepository = new AddressRepository(dataSource);
     }
 
-    /**
-     * Process success.
-     *
-     * @throws SQLException An exception that provides information on a database access error or other errors.
-     */
     public void processSuccess() throws SQLException {
         addressRepository.createTableIfNotExists();
         addressRepository.truncateTable();
