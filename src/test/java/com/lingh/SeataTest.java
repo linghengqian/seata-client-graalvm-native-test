@@ -3,10 +3,9 @@ package com.lingh;
 import com.lingh.commons.TestShardingService;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import io.seata.core.exception.TransactionException;
-import io.seata.rm.RMClient;
-import io.seata.rm.datasource.DataSourceProxy;
-import io.seata.tm.TMClient;
+import org.apache.seata.rm.RMClient;
+import org.apache.seata.rm.datasource.DataSourceProxy;
+import org.apache.seata.tm.TMClient;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledInNativeImage;
 import org.testcontainers.containers.GenericContainer;
@@ -14,6 +13,7 @@ import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import javax.sql.DataSource;
 import java.sql.SQLException;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -33,7 +33,7 @@ public class SeataTest {
     private static final String SERVICE_DEFAULT_GROUP_LIST_KEY = "service.default.grouplist";
 
     @Test
-    void assertSeataTransactions() throws SQLException, TransactionException {
+    void assertSeataTransactions() throws SQLException {
         assertThat(System.getProperty(SERVICE_DEFAULT_GROUP_LIST_KEY), is(nullValue()));
         System.setProperty(SERVICE_DEFAULT_GROUP_LIST_KEY, "127.0.0.1:" + seataContainer.getMappedPort(8091));
         String applicationId = "seata-client-graalvm-native-test";
@@ -43,7 +43,7 @@ public class SeataTest {
         HikariConfig config = new HikariConfig();
         config.setDriverClassName("org.testcontainers.jdbc.ContainerDatabaseDriver");
         config.setJdbcUrl("jdbc:tc:postgresql:16.3-bookworm://test-databases-postgres/demo_ds?TC_INITSCRIPT=seata-script-client-at-postgresql.sql");
-        DataSourceProxy dataSource = new DataSourceProxy(new HikariDataSource(config));
+        DataSource dataSource = new DataSourceProxy(new HikariDataSource(config));
         TestShardingService testShardingService = new TestShardingService(dataSource);
         testShardingService.processSuccess();
         System.clearProperty(SERVICE_DEFAULT_GROUP_LIST_KEY);

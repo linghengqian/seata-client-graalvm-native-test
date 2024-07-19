@@ -1,7 +1,5 @@
 package com.lingh.commons;
 
-import io.seata.core.exception.TransactionException;
-
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +17,7 @@ public final class TestShardingService {
         addressRepository = new AddressRepository(dataSource);
     }
 
-    public void processSuccess() throws SQLException, TransactionException {
+    public void processSuccess() throws SQLException {
         addressRepository.createTableIfNotExists();
         addressRepository.truncateTable();
         for (int i = 1; i <= 10; i++) {
