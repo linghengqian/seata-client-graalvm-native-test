@@ -7,7 +7,6 @@ import io.seata.core.exception.TransactionException;
 import io.seata.rm.RMClient;
 import io.seata.rm.datasource.DataSourceProxy;
 import io.seata.tm.TMClient;
-import org.awaitility.Awaitility;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledInNativeImage;
 import org.testcontainers.containers.GenericContainer;
@@ -16,7 +15,6 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.sql.SQLException;
-import java.time.Duration;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -46,10 +44,6 @@ public class SeataTest {
         config.setDriverClassName("org.testcontainers.jdbc.ContainerDatabaseDriver");
         config.setJdbcUrl("jdbc:tc:postgresql:16.3-bookworm://test-databases-postgres/demo_ds?TC_INITSCRIPT=seata-script-client-at-postgresql.sql");
         DataSourceProxy dataSource = new DataSourceProxy(new HikariDataSource(config));
-        Awaitility.await().atMost(Duration.ofMinutes(1L)).ignoreExceptions().until(() -> {
-            dataSource.getConnection().close();
-            return true;
-        });
         TestShardingService testShardingService = new TestShardingService(dataSource);
         testShardingService.processSuccess();
         System.clearProperty(SERVICE_DEFAULT_GROUP_LIST_KEY);
