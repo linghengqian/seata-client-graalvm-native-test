@@ -16,11 +16,6 @@
   "name":"[Lcom.zaxxer.hikari.util.ConcurrentBag$IConcurrentBagEntry;"
 },
 {
-  "condition":{"typeReachable":"org.apache.seata.rm.datasource.ConnectionContext"},
-  "name":"com.fasterxml.jackson.databind.ext.Java7SupportImpl",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
   "condition":{"typeReachable":"org.apache.seata.config.ConfigurationFactory"},
   "name":"io.seata.config.ConfigurationProvider"
 },
@@ -115,81 +110,6 @@
   "name":"io.seata.sqlparser.util.DbTypeParser"
 },
 {
-  "condition":{"typeReachable":"org.apache.seata.rm.datasource.undo.parser.JacksonUndoLogParser"},
-  "name":"java.io.Serializable",
-  "queryAllDeclaredMethods":true
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.sqlparser.druid.DruidDbTypeParserImpl"},
-  "name":"java.lang.ClassLoader"
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.rm.datasource.undo.parser.JacksonUndoLogParser"},
-  "name":"java.lang.Long"
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.rm.datasource.sql.struct.cache.AbstractTableMetaCache"},
-  "name":"java.lang.Thread",
-  "fields":[{"name":"threadLocalRandomProbe"}]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.config.ConfigurationFactory"},
-  "name":"java.lang.Throwable",
-  "methods":[{"name":"getSuppressed","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.rm.datasource.exec.AbstractDMLBaseExecutor"},
-  "name":"java.lang.Throwable",
-  "methods":[{"name":"getSuppressed","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.rm.datasource.sql.struct.cache.AbstractTableMetaCache"},
-  "name":"java.lang.Throwable",
-  "methods":[{"name":"getSuppressed","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.TmNettyRemotingClient"},
-  "name":"java.lang.management.ManagementFactory",
-  "methods":[{"name":"getRuntimeMXBean","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.TmNettyRemotingClient"},
-  "name":"java.lang.management.RuntimeMXBean",
-  "methods":[{"name":"getInputArguments","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.TmNettyRemotingClient"},
-  "name":"java.nio.Bits",
-  "methods":[{"name":"unaligned","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.TmNettyRemotingClient"},
-  "name":"java.nio.Buffer",
-  "fields":[{"name":"address"}]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.TmNettyRemotingClient"},
-  "name":"java.nio.ByteBuffer",
-  "methods":[{"name":"alignedSlice","parameterTypes":["int"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.TmNettyRemotingClient"},
-  "name":"java.nio.DirectByteBuffer",
-  "methods":[{"name":"<init>","parameterTypes":["long","long"] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.sqlparser.druid.DefaultDruidLoader"},
-  "name":"java.security.SecureRandomParameters"
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.rm.datasource.undo.parser.JacksonUndoLogParser"},
-  "name":"java.util.ArrayList"
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.sqlparser.druid.DruidDbTypeParserImpl"},
-  "name":"java.util.logging.Logger"
-},
-{
   "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.TmNettyRemotingClient"},
   "name":"jdk.internal.misc.Unsafe",
   "methods":[{"name":"getUnsafe","parameterTypes":[] }]
@@ -211,7 +131,7 @@
   "name":"org.apache.seata.config.Configuration"
 },
 {
-  "condition":{"typeReachable":"org.apache.seata.config.ConfigurationCache$$Lambda/0x00007f57f7299550"},
+  "condition":{"typeReachable":"org.apache.seata.config.ConfigurationCache$$Lambda/0x00007f1cf7297338"},
   "name":"org.apache.seata.config.Configuration"
 },
 {
@@ -679,34 +599,5 @@
   "condition":{"typeReachable":"org.apache.seata.tm.TransactionManagerHolder$SingletonHolder"},
   "name":"org.apache.seata.tm.DefaultTransactionManager",
   "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.sqlparser.druid.DruidDbTypeParserImpl"},
-  "name":"org.slf4j.Logger"
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.TmNettyRemotingClient"},
-  "name":"sun.misc.Unsafe",
-  "fields":[{"name":"theUnsafe"}],
-  "methods":[{"name":"copyMemory","parameterTypes":["java.lang.Object","long","java.lang.Object","long","long"] }, {"name":"getAndAddLong","parameterTypes":["java.lang.Object","long","long"] }, {"name":"getAndSetObject","parameterTypes":["java.lang.Object","long","java.lang.Object"] }, {"name":"invokeCleaner","parameterTypes":["java.nio.ByteBuffer"] }, {"name":"storeFence","parameterTypes":[] }]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.rm.datasource.sql.struct.cache.AbstractTableMetaCache"},
-  "name":"sun.misc.Unsafe",
-  "fields":[{"name":"theUnsafe"}]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.TmNettyRemotingClient"},
-  "name":"sun.misc.VM"
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.core.rpc.netty.NettyClientBootstrap"},
-  "name":"sun.nio.ch.SelectorImpl",
-  "fields":[{"name":"publicSelectedKeys"}, {"name":"selectedKeys"}]
-},
-{
-  "condition":{"typeReachable":"org.apache.seata.sqlparser.druid.DefaultDruidLoader"},
-  "name":"sun.security.provider.NativePRNG",
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
 }
 ]

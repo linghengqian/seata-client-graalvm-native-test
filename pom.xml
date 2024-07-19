@@ -148,9 +148,6 @@
                             <version>0.10.2</version>
                             <extensions>true</extensions>
                             <configuration>
-                                <buildArgs>
-                                    <buildArg>-H:+AddAllCharsets</buildArg>
-                                </buildArgs>
                                 <quickBuild>true</quickBuild>
                             </configuration>
                             <executions>

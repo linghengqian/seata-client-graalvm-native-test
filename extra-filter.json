@@ -2,9 +2,12 @@
   "rules": [
     {"includeClasses": "**"},
     {"excludeClasses": "com.alibaba.druid.support.logging.**"},
+    {"excludeClasses": "com.fasterxml.jackson.databind.ext.**"},
     {"excludeClasses": "com.github.benmanes.caffeine.cache.**"},
     {"excludeClasses": "io.netty.**"},
-    {"excludeClasses": "java.sql.**"}
+    {"excludeClasses": "java.**"},
+    {"excludeClasses": "org.slf4j.**"},
+    {"excludeClasses": "sun.**"}
   ],
   "regexRules": [
   ]
