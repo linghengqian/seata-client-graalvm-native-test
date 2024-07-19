@@ -18,7 +18,7 @@
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-all</artifactId>
-            <version>2.0.0</version>
+            <version>1.8.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -118,7 +118,7 @@
                                             <stage>main</stage>
                                         </disabledStages>
                                         <merge>false</merge>
-                                        <outputDirectory>${user.dir}/src/test/resources/META-INF/native-image/org.apache.seata/seata-all/</outputDirectory>
+                                        <outputDirectory>${user.dir}/src/test/resources/META-INF/native-image/io.seata/seata-all/</outputDirectory>
                                     </metadataCopy>
                                 </agent>
                             </configuration>
@@ -154,6 +154,9 @@
                             <version>0.10.2</version>
                             <extensions>true</extensions>
                             <configuration>
+                                <buildArgs>
+                                    <buildArg>-H:+AddAllCharsets</buildArg>
+                                </buildArgs>
                                 <quickBuild>true</quickBuild>
                             </configuration>
                             <executions>

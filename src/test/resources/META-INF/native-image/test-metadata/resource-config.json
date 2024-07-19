@@ -1,0 +1,14 @@
+{
+  "resources":{
+  "includes":[{
+    "condition":{"typeReachable":"com.lingh.SeataTest"},
+    "pattern":"\\Qseata-script-client-at-postgresql.sql\\E"
+  }, {
+    "condition":{"typeReachable":"com.lingh.SeataTest"},
+    "pattern":"\\Qseata-script-client-conf-file.conf\\E"
+  }, {
+    "condition":{"typeReachable":"com.lingh.SeataTest"},
+    "pattern":"\\Qregistry.conf\\E"
+  }]},
+  "bundles":[]
+}
