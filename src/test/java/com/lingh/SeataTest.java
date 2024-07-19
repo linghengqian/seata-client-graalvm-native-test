@@ -26,7 +26,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class SeataTest {
 
     @Container
-    public static final GenericContainer<?> seataContainer = new GenericContainer<>("apache/seata-server:2.1.0")
+    public GenericContainer<?> seataContainer = new GenericContainer<>("apache/seata-server:2.1.0")
             .withExposedPorts(7091, 8091)
             .waitingFor(Wait.forHttp("/health").forPort(7091).forResponsePredicate("ok"::equals));
 

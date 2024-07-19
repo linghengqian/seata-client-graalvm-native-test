@@ -1,0 +1,10 @@
+[
+  {
+    "condition":{"typeReachable":"org.apache.seata.rm.datasource.DataSourceProxy"},
+    "interfaces":["java.sql.Connection"]
+  },
+  {
+    "condition":{"typeReachable":"org.apache.seata.config.ConfigurationCache"},
+    "interfaces":["org.apache.seata.config.Configuration"]
+  }
+]

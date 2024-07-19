@@ -1,7 +1,8 @@
 {
   "rules": [
     {"excludeClasses": "**"},
-    {"includeClasses": "io.seata.**"}
+    {"includeClasses": "io.seata.**"},
+    {"includeClasses": "org.apache.seata.**"}
   ],
   "regexRules": [
   ]
