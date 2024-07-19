@@ -7,7 +7,6 @@ import org.apache.seata.rm.RMClient;
 import org.apache.seata.rm.datasource.DataSourceProxy;
 import org.apache.seata.tm.TMClient;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledInNativeImage;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
@@ -22,7 +21,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 @SuppressWarnings("resource")
 @Testcontainers
-@EnabledInNativeImage
 public class SeataTest {
 
     @Container

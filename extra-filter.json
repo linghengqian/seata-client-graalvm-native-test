@@ -1,6 +1,10 @@
 {
   "rules": [
-    {"includeClasses": "**"}
+    {"includeClasses": "**"},
+    {"excludeClasses": "com.alibaba.druid.support.logging.**"},
+    {"excludeClasses": "com.github.benmanes.caffeine.cache.**"},
+    {"excludeClasses": "io.netty.**"},
+    {"excludeClasses": "java.sql.**"}
   ],
   "regexRules": [
   ]
