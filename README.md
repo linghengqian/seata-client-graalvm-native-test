@@ -1,7 +1,7 @@
 # seata-client-graalvm-native-test
 
-- For https://github.com/apache/incubator-seata/pull/5476 and https://github.com/raphw/byte-buddy/issues/1588 .
-- Verified `seata-provider` under `Ubuntu 22.04.4 LTS` with `Docker Engine` and `SDKMAN!`.
+- For https://github.com/apache/incubator-seata/issues/6686 and https://github.com/raphw/byte-buddy/issues/1588 .
+- Verified under `Ubuntu 22.04.4 LTS` with `Docker Engine` and `SDKMAN!`.
 ```bash
 sdk install java 22.0.1-graalce
 sdk use java 22.0.1-graalce
@@ -14,9 +14,14 @@ git reset --hard 1c0a442842801413e4dc8e663c452ed18fc1dc1b
 
 git clone git@github.com:linghengqian/seata-client-graalvm-native-test.git
 cd ./seata-client-graalvm-native-test/
+
+# Running unit tests under the JVM
 ./mvnw clean test
+
 # Running `./mvnw -PgenerateMetadata -DskipNativeTests -e -T1C clean test native:metadata-copy` is not necessary unless unit tests require more GRM
 # ./mvnw -PgenerateMetadata -DskipNativeTests -e -T1C clean test native:metadata-copy
+
+# Running unit tests under GraalVM Native Image
 ./mvnw -PnativeTestInJunit -T1C -e clean test
 ```
 
