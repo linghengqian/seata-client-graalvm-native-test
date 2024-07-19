@@ -114,12 +114,13 @@ public final class AddressRepository {
      * Assert rollback with transactions.
      * This is currently just a simple test against a non-existent table and does not involve the competition scenario of distributed transactions.
      */
+    @SuppressWarnings({"NumericOverflow", "divzero", "unused"})
     public void assertRollbackWithTransactions() throws SQLException {
         GlobalTransaction globalTransaction = GlobalTransactionContext.getCurrentOrCreate();
         try (Connection connection = dataSource.getConnection()) {
             globalTransaction.begin(60000);
             connection.createStatement().executeUpdate("INSERT INTO t_address (address_id, address_name) VALUES (2024, 'address_test_2024')");
-            connection.createStatement().executeUpdate("INSERT INTO t_table_does_not_exist (test_id_does_not_exist) VALUES (2024)");
+            int i = 10 / 0;
             globalTransaction.commit();
         } catch (Exception ignored) {
             try {
