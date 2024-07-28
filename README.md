@@ -11,6 +11,7 @@ git clone git@github.com:apache/incubator-seata.git
 cd ./incubator-seata/
 git reset --hard 1c0a442842801413e4dc8e663c452ed18fc1dc1b
 ./mvnw -Prelease-seata -Dmaven.test.skip=true clean install -T1C
+cd ../
 
 git clone git@github.com:linghengqian/seata-client-graalvm-native-test.git
 cd ./seata-client-graalvm-native-test/
